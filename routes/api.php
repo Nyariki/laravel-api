@@ -18,4 +18,12 @@ Route::get('/ok', function (Request $request) {
     return env('APP_NAME') . " Ok!";
 });
 
+# API V1 routes
+Route::prefix('v1')->group(function () {
+
+    Route::get('/ok', function (Request $request) {
+        return env('APP_NAME') . " v1 Ok!";
+    });
+});
+
 
