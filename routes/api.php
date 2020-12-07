@@ -14,15 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/ok', function (Request $request) {
-    return env('APP_NAME') . " Ok!";
-});
+Route::group(['middleware' => ['enforceJson']], function () {
 
-# API V1 routes
-Route::prefix('v1')->group(function () {
 
     Route::get('/ok', function (Request $request) {
-        return env('APP_NAME') . " v1 Ok!";
+        return env('APP_NAME') . " Ok!";
+    });
+
+    # API V1 routes
+    Route::prefix('v1')->group(function () {
+
+        Route::get('/ok', function (Request $request) {
+            return env('APP_NAME') . " v1 Ok!";
+        });
     });
 });
 
